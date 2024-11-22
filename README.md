@@ -4,9 +4,12 @@ A new benchmark to measure LLM reasoning capabilities
 ## Benchmarks
 
 ### a.2
-* N : 1000 datetimes
-* Input : datetime in natural form, e.g '11th.february.5951 ,1:12:31.446879 +0100'
-* Target : ISO-8601 in simplified form without microseconds and without timezone
+* __Number of observations__ : 1000
+* __Input__ : datetime in natural form, e.g '11th.february.5951 ,1:12:31.446879 +0100'
+  * Only day-month schema, to avoid ambiguity
+  * Only 4-digit years, to avoid ambiguity
+* __Target__ : ISO-8601 in simplified form without microseconds and without timezone
+
 
 #### Sample
 | input  | target   |
