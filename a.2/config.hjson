@@ -1,0 +1,33 @@
+/* 
+
+datetime/a.2 benchmark
+
+BASE
+datetime/a.1
+
+NOTES
+- only day-month schema
+- 4-digit years
+
+edward | 2024-08-17
+*/
+
+{ 
+    num_obs : 1000
+
+    generator : "dates/datetime/generate16.23.py"
+
+    output : "iso8601" # Simplified ISO 8601 without microseconds and without timezone; e.g 7942-01-22T23:41:06
+    #output : "iso8601b" # ISO8601 with microseconds and timezone
+
+    locale_schema : "en_US"
+
+    # schemas: see generate18_1.py
+    schemas : ["day-month-yyyy", "day-month-weekday-yyyy"]
+
+    # specify a schema for the month that is unambiguous, else the model has know deterministic way of distinguishing the month from the day
+    # possible schemas: all, arabic, unambiguous, roman
+    month_schema : "unambiguous"
+
+    noise : { level : 0, prob : 0.0 }
+}
