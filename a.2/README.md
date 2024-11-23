@@ -1,9 +1,7 @@
-# DATETIME
-A new benchmark to measure LLM reasoning capabilities
+# DATETIME / a.2
+Benchmark to measure LLM datetime translation capabilities.
 
-## Benchmarks
-
-### a.2
+### Details
 * __Number of observations__ : 1000
 * __Input__ : datetime in natural form, e.g '11th.february.5951 ,1:12:31.446879 +0100'
   * Only day-month schema, to avoid ambiguity
