@@ -1,0 +1,28 @@
+/* 
+
+datetime/natural_form.add.day.20.x: input is a datetime in natural form, target is the datetime in ISO-8601 datetime with 20 days added
+
+edward | 2024-11-19
+*/
+
+{ 
+    num_obs : 1000
+
+    generator : "special/phd/datetime_natural_form_tasks.py"
+
+    output : "add.day.20"
+
+    same_month : 0
+
+    # align with datetime/a.2 unambiguous inputs
+    locale_schema : "en_US"
+
+    # schemas: see generate18_1.py
+    schemas : ["day-month-yyyy", "day-month-weekday-yyyy"]
+
+    # specify a schema for the month that is unambiguous, else the model has know deterministic way of distinguishing the month from the day
+    # possible schemas: all, arabic, unambiguous, roman
+    month_schema : "unambiguous"
+
+    noise : { level : 0, prob : 0.0 }
+}
