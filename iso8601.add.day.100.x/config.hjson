@@ -1,0 +1,32 @@
+/* 
+
+datetime/iso8601.add.day.100.x: input is an ISO-8601 format datetime with target is another ISO-8601 datetime with 1 day added
+
+MODIFICATIONS
+1. output : "add.day.100"
+    - add 100 days
+
+BASE
+datetime/iso8601.add.day.50.x
+
+NOTES
+- Used for the ADD-DAY-1 datetime benchmark
+- Input is simplified ISO 8601 without microseconds and without timezone; e.g 7942-01-22T23:41:06
+- - same_month : 0 => target month and year can be different to input month and year
+
+edward | 2024-10-16
+*/
+
+{ 
+    num_obs : 1000
+
+    generator : "special/phd/iso8601_tasks.py"
+
+    output : "add.day.100"
+
+    same_month : 0
+
+    locale_schema : "en_US"
+
+    noise : { level : 0, prob : 0.0 }
+}
