@@ -1,0 +1,33 @@
+/* 
+
+datetime/month.2 benchmark
+
+BASE
+datetime/a.2
+
+NOTES
+- only day-month schema
+- 4-digit years
+
+edward | 2024-08-18
+*/
+
+{ 
+    num_obs : 1000
+
+    generator : "dates/datetime/generate16.23.py"
+
+    # 4-digit year number as an integer, e.g 20222
+    output : "year_int"
+
+    locale_schema : "en_US"
+
+    # schemas: see generate18_1.py
+    schemas : ["day-month-yyyy", "day-month-weekday-yyyy"]
+
+    # specify a schema for the month that is unambiguous, else the model has know deterministic way of distinguishing the month from the day
+    # possible schemas: all, arabic, unambiguous, roman
+    month_schema : "unambiguous"
+
+    noise : { level : 0, prob : 0.0 }
+}
