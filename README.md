@@ -1,5 +1,5 @@
 # DATETIME
-A benchmark to measure LLM datetime translation and reasoning capabilities.
+A new benchmark to measure LLM translation and computation capabilities
 
 ## Benchmarks
 
