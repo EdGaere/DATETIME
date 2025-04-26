@@ -1,4 +1,4 @@
-Instructions for generating data for DATETIME benchmarks.
+Instructions for generating new data for DATETIME benchmarks.
 
 edward | 2025-04-22
 
