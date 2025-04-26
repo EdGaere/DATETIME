@@ -1,0 +1,981 @@
+{
+  "@context": {
+    "@language": "en",
+    "@vocab": "https://schema.org/",
+    "citeAs": "cr:citeAs",
+    "column": "cr:column",
+    "conformsTo": "dct:conformsTo",
+    "cr": "http://mlcommons.org/croissant/",
+    "rai": "http://mlcommons.org/croissant/RAI/",
+    "data": {
+      "@id": "cr:data",
+      "@type": "@json"
+    },
+    "dataType": {
+      "@id": "cr:dataType",
+      "@type": "@vocab"
+    },
+    "dct": "http://purl.org/dc/terms/",
+    "examples": {
+      "@id": "cr:examples",
+      "@type": "@json"
+    },
+    "extract": "cr:extract",
+    "field": "cr:field",
+    "fileProperty": "cr:fileProperty",
+    "fileObject": "cr:fileObject",
+    "fileSet": "cr:fileSet",
+    "format": "cr:format",
+    "includes": "cr:includes",
+    "isLiveDataset": "cr:isLiveDataset",
+    "jsonPath": "cr:jsonPath",
+    "key": "cr:key",
+    "md5": "cr:md5",
+    "parentField": "cr:parentField",
+    "path": "cr:path",
+    "recordSet": "cr:recordSet",
+    "references": "cr:references",
+    "regex": "cr:regex",
+    "repeated": "cr:repeated",
+    "replace": "cr:replace",
+    "sc": "https://schema.org/",
+    "separator": "cr:separator",
+    "source": "cr:source",
+    "subField": "cr:subField",
+    "transform": "cr:transform"
+  },
+  "@type": "sc:Dataset",
+  "name": "The DATETIME benchmark.",
+  "description": "The DATETIME benchmark introduces seven Translation tasks, six Computation tasks and six Mixed tasks that aim to measure an LLM's ability to translate and perform arithmetic on datetimes",
+  "conformsTo": "http://mlcommons.org/croissant/1.0",
+  "citeAs": "@misc{gaere2025datetimenewbenchmarkmeasure, title={DATETIME: A new benchmark to measure LLM translation and reasoning capabilities}, author={Edward Gaere and Florian Wangenheim}, year={2025}, eprint={2504.16155}, archivePrefix={arXiv}, primaryClass={cs.NE}, url={https://arxiv.org/abs/2504.16155} }",
+  "datePublished": "2025-04-26 00:00:00",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "url": "https://github.com/EdGaere/DATETIME",
+  "version": "1.0.0",
+  "distribution": [
+    {
+      "@type": "cr:FileObject",
+      "@id": "github-repository",
+      "name": "github-repository",
+      "description": "Edward Gaere's repository of DATETIME benchmarks on GitHub.",
+      "contentUrl": "https://github.com/EdGaere/DATETIME",
+      "encodingFormat": "git+https",
+      "sha256": "main"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "fileset/datetime/a.2",
+      "name": "DATETIME/Translation/ISO-8601",
+      "description": "Translate the full datetime to ISO-8601 representation without timezone and without microseconds",
+      "containedIn": {
+        "@id": "github-repository"
+      },
+      "encodingFormat": "application/jsonlines",
+      "includes": "a.2/benchmark.jsonl"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "fileset/datetime/year.2",
+      "name": "DATETIME/Translation/Year",
+      "description": "Extract the year from a datetime in natural representation and translate to 4 digits",
+      "containedIn": {
+        "@id": "github-repository"
+      },
+      "encodingFormat": "application/jsonlines",
+      "includes": "year.2/benchmark.jsonl"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "fileset/datetime/month.2",
+      "name": "DATETIME/Translation/Month",
+      "description": "Extract the month from a datetime in natural representation and translate to 2 digits",
+      "containedIn": {
+        "@id": "github-repository"
+      },
+      "encodingFormat": "application/jsonlines",
+      "includes": "month.2/benchmark.jsonl"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "fileset/datetime/day.2",
+      "name": "DATETIME/Translation/Day",
+      "description": "Extract the day from a datetime in natural representation and translate to 2 digits",
+      "containedIn": {
+        "@id": "github-repository"
+      },
+      "encodingFormat": "application/jsonlines",
+      "includes": "day.2/benchmark.jsonl"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "fileset/datetime/hour.2",
+      "name": "DATETIME/Translation/Hour",
+      "description": "Extract the hour from a datetime in natural representation and translate to 2 digits",
+      "containedIn": {
+        "@id": "github-repository"
+      },
+      "encodingFormat": "application/jsonlines",
+      "includes": "hour.2/benchmark.jsonl"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "fileset/datetime/minute.2",
+      "name": "DATETIME/Translation/Minute",
+      "description": "Extract the minute from a datetime in natural representation and translate to 2 digits",
+      "containedIn": {
+        "@id": "github-repository"
+      },
+      "encodingFormat": "application/jsonlines",
+      "includes": "minute.2/benchmark.jsonl"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "fileset/datetime/second.2",
+      "name": "DATETIME/Translation/Second",
+      "description": "Extract the second from a datetime in natural representation and translate to 2 digits",
+      "containedIn": {
+        "@id": "github-repository"
+      },
+      "encodingFormat": "application/jsonlines",
+      "includes": "second.2/benchmark.jsonl"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "fileset/datetime/iso8601.add.day.1.x",
+      "name": "DATETIME/Computation/Add-1",
+      "description": "Add 1 day to a datetime in ISO-8601 form",
+      "containedIn": {
+        "@id": "github-repository"
+      },
+      "encodingFormat": "application/jsonlines",
+      "includes": "iso8601.add.day.1.x/benchmark.jsonl"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "fileset/datetime/iso8601.add.day.10.x",
+      "name": "DATETIME/Computation/Add-10",
+      "description": "Add 10 days to a datetime in ISO-8601 form",
+      "containedIn": {
+        "@id": "github-repository"
+      },
+      "encodingFormat": "application/jsonlines",
+      "includes": "iso8601.add.day.10.x/benchmark.jsonl"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "fileset/datetime/iso8601.add.day.20.x",
+      "name": "DATETIME/Computation/Add-20",
+      "description": "Add 20 days to a datetime in ISO-8601 form",
+      "containedIn": {
+        "@id": "github-repository"
+      },
+      "encodingFormat": "application/jsonlines",
+      "includes": "iso8601.add.day.20.x/benchmark.jsonl"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "fileset/datetime/iso8601.add.day.50.x",
+      "name": "DATETIME/Computation/Add-50",
+      "description": "Add 50 days to a datetime in ISO-8601 form",
+      "containedIn": {
+        "@id": "github-repository"
+      },
+      "encodingFormat": "application/jsonlines",
+      "includes": "iso8601.add.day.50.x/benchmark.jsonl"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "fileset/datetime/iso8601.add.day.100.x",
+      "name": "DATETIME/Computation/Add-100",
+      "description": "Add 100 days to a datetime in ISO-8601 form",
+      "containedIn": {
+        "@id": "github-repository"
+      },
+      "encodingFormat": "application/jsonlines",
+      "includes": "iso8601.add.day.100.x/benchmark.jsonl"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "fileset/datetime/iso8601.add.day.250.x",
+      "name": "DATETIME/Computation/Add-250",
+      "description": "Add 250 days to a datetime in ISO-8601 form",
+      "containedIn": {
+        "@id": "github-repository"
+      },
+      "encodingFormat": "application/jsonlines",
+      "includes": "iso8601.add.day.250.x/benchmark.jsonl"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "fileset/datetime/natural_form.add.day.1.x",
+      "name": "DATETIME/Mixed/Add-1",
+      "description": "Add 1 day to a datetime in natural form",
+      "containedIn": {
+        "@id": "github-repository"
+      },
+      "encodingFormat": "application/jsonlines",
+      "includes": "natural_form.add.day.1.x/benchmark.jsonl"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "fileset/datetime/natural_form.add.day.10.x",
+      "name": "DATETIME/Mixed/Add-10",
+      "description": "Add 10 days to a datetime in natural form",
+      "containedIn": {
+        "@id": "github-repository"
+      },
+      "encodingFormat": "application/jsonlines",
+      "includes": "natural_form.add.day.10.x/benchmark.jsonl"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "fileset/datetime/natural_form.add.day.20.x",
+      "name": "DATETIME/Mixed/Add-20",
+      "description": "Add 20 days to a datetime in natural form",
+      "containedIn": {
+        "@id": "github-repository"
+      },
+      "encodingFormat": "application/jsonlines",
+      "includes": "natural_form.add.day.20.x/benchmark.jsonl"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "fileset/datetime/natural_form.add.day.50.x",
+      "name": "DATETIME/Mixed/Add-50",
+      "description": "Add 50 days to a datetime in natural form",
+      "containedIn": {
+        "@id": "github-repository"
+      },
+      "encodingFormat": "application/jsonlines",
+      "includes": "natural_form.add.day.50.x/benchmark.jsonl"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "fileset/datetime/natural_form.add.day.100.x",
+      "name": "DATETIME/Mixed/Add-100",
+      "description": "Add 100 days to a datetime in natural form",
+      "containedIn": {
+        "@id": "github-repository"
+      },
+      "encodingFormat": "application/jsonlines",
+      "includes": "natural_form.add.day.100.x/benchmark.jsonl"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "fileset/datetime/natural_form.add.day.250.x",
+      "name": "DATETIME/Mixed/Add-250",
+      "description": "Add 250 days to a datetime in natural form",
+      "containedIn": {
+        "@id": "github-repository"
+      },
+      "encodingFormat": "application/jsonlines",
+      "includes": "natural_form.add.day.250.x/benchmark.jsonl"
+    }
+  ],
+  "recordSet": [
+    {
+      "@type": "cr:RecordSet",
+      "@id": "datetime/a.2",
+      "name": "DATETIME/Translation/ISO-8601",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "datetime/a.2/input",
+          "name": "input",
+          "description": "A datetime in natural form, e.g 11th.february.5951 ,1:12:31.446879 +0100",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "fileset/datetime/a.2"
+            },
+            "extract": {
+              "column": "input"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "datetime/a.2/target",
+          "name": "target",
+          "description": "The datetime in ISO-8601 format, without timezone and without microseconds",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "fileset/datetime/a.2"
+            },
+            "extract": {
+              "column": "target"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "datetime/year.2",
+      "name": "DATETIME/Translation/Year",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "datetime/year.2/input",
+          "name": "input",
+          "description": "A datetime in natural form, e.g 11th.february.5951 ,1:12:31.446879 +0100",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "fileset/datetime/year.2"
+            },
+            "extract": {
+              "column": "input"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "datetime/year.2/target",
+          "name": "target",
+          "description": "The year in 4 digit format",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "fileset/datetime/year.2"
+            },
+            "extract": {
+              "column": "target"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "datetime/month.2",
+      "name": "DATETIME/Translation/Month",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "datetime/month.2/input",
+          "name": "input",
+          "description": "A datetime in natural form, e.g 11th.february.5951 ,1:12:31.446879 +0100",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "fileset/datetime/month.2"
+            },
+            "extract": {
+              "column": "input"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "datetime/month.2/target",
+          "name": "target",
+          "description": "The month in 2 digit format",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "fileset/datetime/month.2"
+            },
+            "extract": {
+              "column": "target"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "datetime/day.2",
+      "name": "DATETIME/Translation/Day",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "datetime/day.2/input",
+          "name": "input",
+          "description": "A datetime in natural form, e.g 11th.february.5951 ,1:12:31.446879 +0100",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "fileset/datetime/day.2"
+            },
+            "extract": {
+              "column": "input"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "datetime/day.2/target",
+          "name": "target",
+          "description": "The day in 2 digit format",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "fileset/datetime/day.2"
+            },
+            "extract": {
+              "column": "target"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "datetime/hour.2",
+      "name": "DATETIME/Translation/Hour",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "datetime/hour.2/input",
+          "name": "input",
+          "description": "A datetime in natural form, e.g 11th.february.5951 ,1:12:31.446879 +0100",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "fileset/datetime/hour.2"
+            },
+            "extract": {
+              "column": "input"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "datetime/hour.2/target",
+          "name": "target",
+          "description": "The hour in 2 digit format",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "fileset/datetime/hour.2"
+            },
+            "extract": {
+              "column": "target"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "datetime/minute.2",
+      "name": "DATETIME/Translation/Minute",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "datetime/minute.2/input",
+          "name": "input",
+          "description": "A datetime in natural form, e.g 11th.february.5951 ,1:12:31.446879 +0100",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "fileset/datetime/minute.2"
+            },
+            "extract": {
+              "column": "input"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "datetime/minute.2/target",
+          "name": "target",
+          "description": "The minute in 2 digit format",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "fileset/datetime/minute.2"
+            },
+            "extract": {
+              "column": "target"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "datetime/second.2",
+      "name": "DATETIME/Translation/Second",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "datetime/second.2/input",
+          "name": "input",
+          "description": "A datetime in natural form, e.g 11th.february.5951 ,1:12:31.446879 +0100",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "fileset/datetime/second.2"
+            },
+            "extract": {
+              "column": "input"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "datetime/second.2/target",
+          "name": "target",
+          "description": "The second in 2 digit format",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "fileset/datetime/second.2"
+            },
+            "extract": {
+              "column": "target"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "datetime/iso8601.add.day.1.x",
+      "name": "DATETIME/Computation/Add-1",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "datetime/iso8601.add.day.1.x/input",
+          "name": "input",
+          "description": "A datetime in ISO-8601 format",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "fileset/datetime/iso8601.add.day.1.x"
+            },
+            "extract": {
+              "column": "input"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "datetime/iso8601.add.day.1.x/target",
+          "name": "target",
+          "description": "The input datetime with 1 day added, in ISO-8601 format",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "fileset/datetime/iso8601.add.day.1.x"
+            },
+            "extract": {
+              "column": "target"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "datetime/iso8601.add.day.10.x",
+      "name": "DATETIME/Computation/Add-10",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "datetime/iso8601.add.day.10.x/input",
+          "name": "input",
+          "description": "A datetime in ISO-8601 format",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "fileset/datetime/iso8601.add.day.10.x"
+            },
+            "extract": {
+              "column": "input"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "datetime/iso8601.add.day.10.x/target",
+          "name": "target",
+          "description": "The input datetime with 10 days added, in ISO-8601 format",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "fileset/datetime/iso8601.add.day.10.x"
+            },
+            "extract": {
+              "column": "target"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "datetime/iso8601.add.day.20.x",
+      "name": "DATETIME/Computation/Add-20",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "datetime/iso8601.add.day.20.x/input",
+          "name": "input",
+          "description": "A datetime in ISO-8601 format",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "fileset/datetime/iso8601.add.day.20.x"
+            },
+            "extract": {
+              "column": "input"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "datetime/iso8601.add.day.20.x/target",
+          "name": "target",
+          "description": "The input datetime with 20 days added, in ISO-8601 format",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "fileset/datetime/iso8601.add.day.20.x"
+            },
+            "extract": {
+              "column": "target"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "datetime/iso8601.add.day.50.x",
+      "name": "DATETIME/Computation/Add-50",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "datetime/iso8601.add.day.50.x/input",
+          "name": "input",
+          "description": "A datetime in ISO-8601 format",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "fileset/datetime/iso8601.add.day.50.x"
+            },
+            "extract": {
+              "column": "input"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "datetime/iso8601.add.day.50.x/target",
+          "name": "target",
+          "description": "The input datetime with 50 days added, in ISO-8601 format",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "fileset/datetime/iso8601.add.day.50.x"
+            },
+            "extract": {
+              "column": "target"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "datetime/iso8601.add.day.100.x",
+      "name": "DATETIME/Computation/Add-100",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "datetime/iso8601.add.day.100.x/input",
+          "name": "input",
+          "description": "A datetime in ISO-8601 format",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "fileset/datetime/iso8601.add.day.100.x"
+            },
+            "extract": {
+              "column": "input"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "datetime/iso8601.add.day.100.x/target",
+          "name": "target",
+          "description": "The input datetime with 100 days added, in ISO-8601 format",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "fileset/datetime/iso8601.add.day.100.x"
+            },
+            "extract": {
+              "column": "target"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "datetime/iso8601.add.day.250.x",
+      "name": "DATETIME/Computation/Add-250",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "datetime/iso8601.add.day.250.x/input",
+          "name": "input",
+          "description": "A datetime in ISO-8601 format",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "fileset/datetime/iso8601.add.day.250.x"
+            },
+            "extract": {
+              "column": "input"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "datetime/iso8601.add.day.250.x/target",
+          "name": "target",
+          "description": "The input datetime with 250 days added, in ISO-8601 format",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "fileset/datetime/iso8601.add.day.250.x"
+            },
+            "extract": {
+              "column": "target"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "datetime/natural_form.add.day.1.x",
+      "name": "DATETIME/Mixed/Add-1",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "datetime/natural_form.add.day.1.x/input",
+          "name": "input",
+          "description": "A datetime in natural form, e.g 11th.february.5951 ,1:12:31.446879 +0100",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "fileset/datetime/natural_form.add.day.1.x"
+            },
+            "extract": {
+              "column": "input"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "datetime/natural_form.add.day.1.x/target",
+          "name": "target",
+          "description": "The input datetime with 1 day added, in ISO-8601 format",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "fileset/datetime/natural_form.add.day.1.x"
+            },
+            "extract": {
+              "column": "target"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "datetime/natural_form.add.day.10.x",
+      "name": "DATETIME/Mixed/Add-10",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "datetime/natural_form.add.day.10.x/input",
+          "name": "input",
+          "description": "A datetime in natural form, e.g 11th.february.5951 ,1:12:31.446879 +0100",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "fileset/datetime/natural_form.add.day.10.x"
+            },
+            "extract": {
+              "column": "input"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "datetime/natural_form.add.day.10.x/target",
+          "name": "target",
+          "description": "The input datetime with 10 days added, in ISO-8601 format",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "fileset/datetime/natural_form.add.day.10.x"
+            },
+            "extract": {
+              "column": "target"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "datetime/natural_form.add.day.20.x",
+      "name": "DATETIME/Mixed/Add-20",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "datetime/natural_form.add.day.20.x/input",
+          "name": "input",
+          "description": "A datetime in natural form, e.g 11th.february.5951 ,1:12:31.446879 +0100",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "fileset/datetime/natural_form.add.day.20.x"
+            },
+            "extract": {
+              "column": "input"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "datetime/natural_form.add.day.20.x/target",
+          "name": "target",
+          "description": "The input datetime with 20 days added, in ISO-8601 format",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "fileset/datetime/natural_form.add.day.20.x"
+            },
+            "extract": {
+              "column": "target"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "datetime/natural_form.add.day.50.x",
+      "name": "DATETIME/Mixed/Add-50",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "datetime/natural_form.add.day.50.x/input",
+          "name": "input",
+          "description": "A datetime in natural form, e.g 11th.february.5951 ,1:12:31.446879 +0100",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "fileset/datetime/natural_form.add.day.50.x"
+            },
+            "extract": {
+              "column": "input"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "datetime/natural_form.add.day.50.x/target",
+          "name": "target",
+          "description": "The input datetime with 50 days added, in ISO-8601 format",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "fileset/datetime/natural_form.add.day.50.x"
+            },
+            "extract": {
+              "column": "target"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "datetime/natural_form.add.day.100.x",
+      "name": "DATETIME/Mixed/Add-100",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "datetime/natural_form.add.day.100.x/input",
+          "name": "input",
+          "description": "A datetime in natural form, e.g 11th.february.5951 ,1:12:31.446879 +0100",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "fileset/datetime/natural_form.add.day.100.x"
+            },
+            "extract": {
+              "column": "input"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "datetime/natural_form.add.day.100.x/target",
+          "name": "target",
+          "description": "The input datetime with 100 days added, in ISO-8601 format",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "fileset/datetime/natural_form.add.day.100.x"
+            },
+            "extract": {
+              "column": "target"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "datetime/natural_form.add.day.250.x",
+      "name": "DATETIME/Mixed/Add-250",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "datetime/natural_form.add.day.250.x/input",
+          "name": "input",
+          "description": "A datetime in natural form, e.g 11th.february.5951 ,1:12:31.446879 +0100",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "fileset/datetime/natural_form.add.day.250.x"
+            },
+            "extract": {
+              "column": "input"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "datetime/natural_form.add.day.250.x/target",
+          "name": "target",
+          "description": "The input datetime with 250 days added, in ISO-8601 format",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "fileset/datetime/natural_form.add.day.250.x"
+            },
+            "extract": {
+              "column": "target"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
