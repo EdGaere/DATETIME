@@ -1,7 +1,12 @@
 # DATETIME
-A new benchmark to measure LLM translation and computation capabilities
+A new benchmark to measure LLM translation and computation capabilities.
 
-## Benchmarks
+* Croissant metadata is available in the file DATETIME Croissant - v0.4.4.json
+
+* Code and instructions for generating new data is in code/datetime_benchmark
+
+
+## Tasks in the Benchmarks
 
 ### Measure LLM datetime translation capabilities
 * a.2: Translation from natural representation to ISO-8601 representation
@@ -27,3 +32,17 @@ A new benchmark to measure LLM translation and computation capabilities
 * natural_form.add.day.50.x : Add 50 days to a natural representation ISO-8601 datetime and generate a new ISO-8601 datetime
 * natural_form.add.day.100.x : Add 100 days to a natural representation ISO-8601 datetime and generate a new ISO-8601 datetime
 * natural_form.add.day.250.x : Add 250 days to a natural representation ISO-8601 datetime and generate a new ISO-8601 datetime
+
+## Citation
+```
+@misc{gaere2025datetimenewbenchmarkmeasure,
+      title={DATETIME: A new benchmark to measure LLM translation and reasoning capabilities}, 
+      author={Edward Gaere and Florian Wangenheim},
+      year={2025},
+      eprint={2504.16155},
+      archivePrefix={arXiv},
+      primaryClass={cs.NE},
+      url={https://arxiv.org/abs/2504.16155}, 
+}
+``
+
